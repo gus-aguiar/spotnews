@@ -19,7 +19,7 @@ class News(models.Model):
         Users,
         on_delete=models.CASCADE,
     )
-    created_at = models.DateTimeField(auto_now_add=True, blank=False)
+    created_at = models.DateField()
     image = models.ImageField(upload_to="img/", blank=True)
     categories = models.ManyToManyField(Categories)
 
