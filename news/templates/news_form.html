@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário para Nova Notícia</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <ul class="header-links">
+            <li><a href="{% url 'home-page' %}">Home</a></li>
+            <li><a href="{% url 'categories-form' %}">Cadastrar Categorias</a></li>
+            <li><a href="{% url 'news-form' %}">Cadastrar Notícias</a></li>
+        </ul>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form method="post" action="{% url 'news-form' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Título</label>
+            {{ form.title }}
+        </div>
+    
+        <div class="form-group">
+            <label for="{{ form.content.id_for_label }}">Conteúdo</label>
+            {{ form.content }}
+        </div>
+    
+        <div class="form-group">
+            <label for="{{ form.author.id_for_label }}">Autoria</label>            
+                {{ form.author }}
+        </div>
+    
+        <div class="form-group">
+            <label for="{{ form.created_at.id_for_label }}">Criado em</label>
+            {{ form.created_at }}
+        </div>
+    
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">URL da Imagem</label>
+            {{ form.image }}
+        </div>
+    
+        <div class="form-group">
+            {{ form.categories }}
+        </div>
+    
+        <button type="submit">Salvar</button>
+    </form>
+
+</body>
+</html>
