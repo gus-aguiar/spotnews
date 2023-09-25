@@ -16,9 +16,11 @@
     <div class="news-container">
         {% for news in news_list %}
         <div class="news-card">
+            <a href="{% url 'news-details-page' news.id %}">
             <img src="{% static news.image %}" alt="{{ news.title }}">
             <h2 class="news-title">{{ news.title }}</h2>
             <span class="news-date">{{ news.created_at|date:"d/m/Y" }}</span>
+            </a>
         </div>
         {% endfor %}
     </div>
