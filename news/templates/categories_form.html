@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário para Nova Categoria</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <ul class="header-links">
+            <li><a href="{% url 'home-page' %}">Home</a></li>
+            <a href="{% url 'categories-form' %}">Cadastrar Categorias</a>
+        </ul>
+    </header>
+    <br>
+    <br>
+    <form method="post" action="{% url 'categories-form' %}">
+        {% csrf_token %}
+        <label for="{{ form.name.auto_id }}">Nome</label>
+      {{ form.name }}
+        <button type="submit">Salvar</button>
+    </form>
+
+</body>
+</html>
